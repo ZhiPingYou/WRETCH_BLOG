@@ -1,5 +1,6 @@
 from django.urls import path
 from django.shortcuts import render
+from django.contrib import admin
 
 
 def home(request):
@@ -17,4 +18,5 @@ urlpatterns = [
     path("about/", about),
     path("", home),
     path("qa/", qa),
+    path ("admin/", admin.site.urls)
 ]

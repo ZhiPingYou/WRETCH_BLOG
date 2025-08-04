@@ -1,17 +1,9 @@
 from django.urls import path
-from django.shortcuts import render
 from django.contrib import admin
+from .views import about, home, qa
 
 
-def home(request):
-    return render(request, "home.html")
 
-
-def about(request):
-    return render(request, "about.html")
-
-def qa(request):
-    return render(request, "qa.html")
 
 
 urlpatterns = [

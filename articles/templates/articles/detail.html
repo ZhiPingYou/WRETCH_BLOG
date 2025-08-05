@@ -1,0 +1,9 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+<a href="{% url 'articles:index' %}" class="btn btn-success text-xl">
+    返回文章列表
+</a>
+
+<h1 class="text-3xl">Hello, {{ id }}</h1>
+{% endblock %}

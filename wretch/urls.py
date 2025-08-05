@@ -7,6 +7,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path("", include("pages.urls")),
-    path("articles", include("articles.urls")),
+    path("articles/", include("articles.urls")),
     path ("admin/", admin.site.urls)
+    # 不加斜線會連不到而出錯
 ]

@@ -7,7 +7,8 @@ from . import views
 app_name = "articles"
 
 urlpatterns = [
-    path("index/", views.index, name="index"),
+    path("", views.index, name="index"),
     path("new/", views.new, name="new"),
-    
+    path("<int:id>/", views.detail, name="detail"),
+    # 除首頁""外, 其它最好加斜線
 ]

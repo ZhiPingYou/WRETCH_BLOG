@@ -4,11 +4,11 @@ from . import views
 
 
 
-
+app_name = "pages"
 
 urlpatterns = [
-    path("about/", views.about),
-    path("", views.home),
-    path("contact/", views.contact),
+    path("about/", views.about, name="about"),
+    path("", views.home, name="home"),
+    path("contact/", views.contact, name="contact"),
     
 ]

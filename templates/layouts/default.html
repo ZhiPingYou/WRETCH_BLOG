@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>有名小站</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 </head>
 <body>
-<nav class="text-6xl">
+<nav class="text-6xl bg-green-200">
     <!-- 以下要有前綴page區分不同app的home/contact/about頁 -->
     <ul class="flex gap-8 justify-center">
         <li><a href="{% url 'pages:home' %}">首頁</a></li>
@@ -18,7 +19,7 @@
         <li><a href="{% url 'articles:index' %}">文章</a></li>
     </ul>
 </nav>
-<main class="flex bg-green-200 text-4xl justify-evenly">
+<main class="text-4xl">
 {% block content %}
 {% endblock %}
 </main>

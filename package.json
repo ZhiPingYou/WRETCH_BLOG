@@ -1,0 +1,30 @@
+{
+  "name": "wretch-blog-main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "js:dev": "esbuild src/scripts/app.js --bundle --outfile=public/scripts/app.js --watch",
+    "js:build": "esbuild src/scripts/app.js --bundle --minify --outfile=public/scripts/app.js",
+    "css:dev": "npx @tailwindcss/cli -i src/styles/app.css -o public/styles/app.css --watch",
+    "css:build": "npx @tailwindcss/cli -i src/styles/app.css -o public/styles/app.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZhiPingYou/wumin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZhiPingYou/wumin/issues"
+  },
+  "homepage": "https://github.com/ZhiPingYou/wumin#readme",
+  "devDependencies": {
+    "esbuild": "^0.25.8"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "alpinejs": "^3.14.9",
+    "tailwindcss": "^4.1.11"
+  }
+}

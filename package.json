@@ -7,7 +7,10 @@
     "js:dev": "esbuild src/scripts/app.js --bundle --outfile=public/scripts/app.js --watch",
     "js:build": "esbuild src/scripts/app.js --bundle --minify --outfile=public/scripts/app.js",
     "css:dev": "npx @tailwindcss/cli -i src/styles/app.css -o public/styles/app.css --watch",
-    "css:build": "npx @tailwindcss/cli -i src/styles/app.css -o public/styles/app.css --minify"
+    "css:build": "npx @tailwindcss/cli -i src/styles/app.css -o public/styles/app.css --minify",
+    "dev": "concurrently \"npm:js:dev\" \"npm:css:dev\"",
+    "build": "concurrently \"npm:js:build\" \"npm:css:build\""
+
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,8 @@
   },
   "homepage": "https://github.com/ZhiPingYou/wumin#readme",
   "devDependencies": {
+    "concurrently": "^9.2.0",
+    "daisyui": "^5.0.50",
     "esbuild": "^0.25.8"
   },
   "dependencies": {

@@ -44,5 +44,5 @@ def detail(request, id):
 
 def edit(request, id):
     article = get_object_or_404(Article, pk=id)
-    messages.success(request, "修改成功")
+    # messages.success(request, "修改成功")
     return render(request, "articles/edit.html", {"article": article})

@@ -6,6 +6,7 @@
     <title>有名小站</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body>
 <nav class="text-6xl bg-green-200">
@@ -18,6 +19,9 @@
     </ul>
 </nav>
 <main class="text-4xl">
+
+
+{% include "shared/message.html" %}
 {% block content %}
 {% endblock %}
 </main>

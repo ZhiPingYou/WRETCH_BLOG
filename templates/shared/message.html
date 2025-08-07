@@ -1,0 +1,8 @@
+{% if messages %}
+    {% for m in messages %}
+        <div x-data role="alert"  class="flex justify-between alert alert-{{ m.tags }}" >
+            <span>{{m}}</span>
+            <button @click="show = false" class="btn btn-xs">X</button>
+        </div>
+    {% endfor %}
+{% endif %}

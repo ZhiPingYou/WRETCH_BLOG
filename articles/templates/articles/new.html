@@ -3,7 +3,7 @@
 {% block content %}
 
 <h2>新增文章</h2>
-<form action="{% url 'articles:index' %}" method="post" class="flex flex-col gap-4">
+<form action="{% url 'articles:index' %}" method="post" class="flex flex-col gap-4" x-data @submit="confirm('確認新增文章嗎?')">
     {% csrf_token %}
     <div class="flex flex-col">
         <label class="label">標題</label>

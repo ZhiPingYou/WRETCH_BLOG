@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 from django.http import HttpResponse
+from django.contrib import messages
 
 
 def index(request):
@@ -8,6 +9,7 @@ def index(request):
         title = request.POST['title']
         content = request.POST['content']
         Article.objects.create(title=title, content=content)
+        messages.success(request, "新增成功")
         return redirect("articles:index")
     else:
         articles = Article.objects.all().order_by("-id")
@@ -29,10 +31,12 @@ def detail(request, id):
             article.title = title
             article.content = content
             article.save()
+            messages.success(request, "更新成功")
             return redirect("articles:detail", article.id)
             
         if request.POST["_method"] == 'delete':
             article.delete()
+            messages.success(request, "刪除成功")
             return redirect("articles:index")
             
     else:
@@ -40,4 +44,5 @@ def detail(request, id):
 
 def edit(request, id):
     article = get_object_or_404(Article, pk=id)
+    messages.success(request, "修改成功")
     return render(request, "articles/edit.html", {"article": article})

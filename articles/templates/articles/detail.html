@@ -5,5 +5,9 @@
     返回文章列表
 </a>
 
-<h1 class="text-3xl">Hello, {{ id }}</h1>
+<h1 class="text-3xl">標題是 {{ article.title }}</h1>
+<article>
+    {{ article.content|linebreaks }}
+</article>
+
 {% endblock %}

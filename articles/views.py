@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
+from django.http import HttpResponse
 
 
 def index(request):
@@ -16,4 +17,10 @@ def new(request):
     return render(request, "articles/new.html")
 
 def detail(request, id):
-    return render(request, "articles/detail.html", {"id": id})
+    # try:
+    #     article = Article.objects.get(pk=id)
+    # except:
+    #     return HttpResponse("不好意思目前找不到")
+    article = get_object_or_404(Article, pk=id )
+
+    return render(request, "articles/detail.html", {"article": article})

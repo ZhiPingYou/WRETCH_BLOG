@@ -1,0 +1,26 @@
+{%extends "layouts/default.html"%}
+
+{% block content %}
+
+<h2>編輯文章</h2>
+<form action="{% url 'articles:detail' article.id %}" method="post" class="flex flex-col gap-4">
+    <!-- 由於表單只有get及post, 所以用以下那一行處理 -->
+    <input type="hidden" name="_method" value="patch">
+
+    {% csrf_token %}
+
+    <div class="flex flex-col">
+        <label class="label">標題</label>
+        <input type="text" name="title" class="text" value="{{ article.title }}">
+    </div>
+    <div class="flex flex-col">
+        <label class="label">內文</label>
+        <textarea type="textarea" name="content" class="textarea">{{ article.content }}</textarea>
+    </div>
+    <div class="text-2xl">
+        <button class="btn btn-success">更新</button>
+    </div>
+</form>
+
+
+{% endblock %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 from django.contrib import messages
 from .forms import  ArticleForm
+from comment.forms import CommentForm
 
 
 def index(request):
@@ -48,7 +49,10 @@ def detail(request, id):
             return redirect("articles:index")
             
     else:
-        return render(request, "articles/detail.html", {"article": article})
+        comment_form = CommentForm()
+        comments = article.comment_set.order_by("-id")
+
+        return render(request, "articles/detail.html", {"article": article}, {"comment_form": comment_form}, {"comments": comments})
 
 def edit(request, id):
     article = get_object_or_404(Article, pk=id)

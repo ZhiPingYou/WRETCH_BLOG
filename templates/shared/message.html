@@ -1,3 +1,6 @@
+{% comment %}
+    保留 CSS 類別 alert-success alert-error alert-warning
+{% endcomment %}
 {% if messages %}
     {% for m in messages %}
         <template x-data="{show: true}" x-if="show">

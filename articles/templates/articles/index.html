@@ -6,11 +6,11 @@
 <a href="{% url 'articles:new' %}" class="btn btn-success">新增文章</a>
 <hr>
 
-
 <!-- django這裡的{}是template tag, 不是python語言 -->
 {% for article in articles_no %}
 <article class="mb-8">
     <h2>
+        {% if article.is_published %} o {% else %} x {% endif %}
         <a class="bg-red-100" href="{% url 'articles:detail' article.id %}"> 
             {{ article.title }}
         </a>

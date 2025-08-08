@@ -1,22 +1,27 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
-from django.http import HttpResponse
 from django.contrib import messages
+from .forms import  ArticleForm
 
 
 def index(request):
-    if request.POST:
-        title = request.POST['title']
-        content = request.POST['content']
-        Article.objects.create(title=title, content=content)
+    if request.method == "POST":
+        form = ArticleForm(request.POST)
+        form.save()
+        # title = request.POST.get['title']
+        # content = request.POST.get['content']
+        # is_published = request.POST.get["is_published"] == "on"
+        # Article.objects.create(title=title, content=content)
         messages.success(request, "新增成功")
         return redirect("articles:index")
     else:
         articles = Article.objects.all().order_by("-id")
+        # articles = Article.objects.filter(is_published=True).order_by("-id")
         return render(request, "articles/index.html", {"articles_no": articles})
 
 def new(request):
-    return render(request, "articles/new.html")
+    form = ArticleForm()
+    return render(request, "articles/new.html", {"form": form})
 
 def detail(request, id):
     # try:
@@ -25,12 +30,15 @@ def detail(request, id):
     #     return HttpResponse("不好意思目前找不到")
     article = get_object_or_404(Article, pk=id)
     if request.POST:
-        if request.POST["_method"] == 'patch':
-            title = request.POST["title"]
-            content = request.POST["content"]
-            article.title = title
-            article.content = content
-            article.save()
+        if request.POST.get("_method") == 'patch':
+            form = ArticleForm(request.POST, instance=article)
+            form.save()
+            # title = request.POST.get["title"]
+            # content = request.POST.get["content"]
+            # article.is_published = request.POST["is_published"] == "on"
+            # article.title = title
+            # article.content = content
+            # article.save()
             messages.success(request, "更新成功")
             return redirect("articles:detail", article.id)
             
@@ -44,5 +52,6 @@ def detail(request, id):
 
 def edit(request, id):
     article = get_object_or_404(Article, pk=id)
+    form = ArticleForm(instance= Article)
     # messages.success(request, "修改成功")
-    return render(request, "articles/edit.html", {"article": article})
+    return render(request, "articles/edit.html", {"article": article, "form": form})

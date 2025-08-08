@@ -29,7 +29,7 @@ flowchart LR
   end
 
   %% 資料層
-  subgraph DB[(資料庫與快取)]
+  subgraph DB[資料庫與快取]
     S1[(PostgreSQL：usage_sessions／usage_daily)]
     S2[(PostgreSQL：promotions／coupons／cards／merchants)]
     S3[(Redis：優惠計算結果快取)]

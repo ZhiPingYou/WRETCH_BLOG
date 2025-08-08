@@ -1,3 +1,4 @@
+```mermaid
 flowchart LR
   %% 前端
   subgraph FE1[前端分支A：單一瀏覽器 Plugin（訂閱監控 + 商品優惠計算）]
@@ -45,3 +46,4 @@ flowchart LR
   R2 --> S2
   R5 --> S3
   R4 --> P8
+```
